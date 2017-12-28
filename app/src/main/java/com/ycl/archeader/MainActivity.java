@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 public class MainActivity extends AppCompatActivity {
 
     ArcHeaderView mArcHeaderView;
+    CircleProgressView circleProgressView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
 
         mArcHeaderView = (ArcHeaderView) findViewById(R.id.header_view);
         mArcHeaderView.setColor(getResources().getColor(R.color.start_color),getResources().getColor(R.color.end_color));
+
+        circleProgressView = (CircleProgressView) findViewById(R.id.circleProgressbar);
+
+        circleProgressView.setProgress(30);
 
     }
 

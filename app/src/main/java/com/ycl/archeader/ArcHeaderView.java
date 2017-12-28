@@ -112,7 +112,7 @@ public class ArcHeaderView extends View {
         controlPoint.y = height;
 
         //修改颜色线性渐变
-        linearGradient = new LinearGradient(0, 0, 0, height, startColor, endColor, Shader.TileMode.MIRROR);
+        linearGradient = new LinearGradient(0, 0, 0, height, startColor, endColor, Shader.TileMode.CLAMP);
 
         invalidate();
     }
@@ -128,6 +128,8 @@ public class ArcHeaderView extends View {
         path.moveTo(startPoint.x, startPoint.y);
         path.quadTo(controlPoint.x, controlPoint.y, endPoint.x, endPoint.y);
 
+        paint.setShadowLayer(30, 0, 0, getResources().getColor(R.color.start_color)); // 画阴影
+
         //开始画
         canvas.drawPath(path, paint);
     }
@@ -135,7 +137,7 @@ public class ArcHeaderView extends View {
     public void setColor(int startColor, int endColor) {
         this.startColor = startColor;
         this.endColor = endColor;
-        linearGradient = new LinearGradient(0, 0, 0, height, this.startColor, this.endColor, Shader.TileMode.MIRROR);
+        linearGradient = new LinearGradient(0, height * 4/7, 0, height, this.startColor, this.endColor, Shader.TileMode.CLAMP);
 
         invalidate();
     }
